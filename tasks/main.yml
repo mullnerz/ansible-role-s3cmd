@@ -12,7 +12,7 @@
   pip:
     name=s3cmd
     state=latest
-    ignore_errors: "{{ ansible_check_mode }}"
+  ignore_errors: "{{ ansible_check_mode }}"
 
 - name: Symlink s3cmd executable file to /usr/bin
   file:
