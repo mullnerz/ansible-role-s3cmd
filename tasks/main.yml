@@ -12,9 +12,11 @@
   pip:
     name=s3cmd
     state=latest
+    ignore_errors: "{{ ansible_check_mode }}"
 
 - name: Symlink s3cmd executable file to /usr/bin
   file:
     src=/usr/local/bin/s3cmd
     dest=/usr/bin/s3cmd
     state=link
+    force=yes
