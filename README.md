@@ -1,4 +1,4 @@
-ansible-role-s3cmd
+ansible-role-s3cmd-latest
 =========
 
 This role installs the latest version of the S3CMD package using python PIP.
@@ -10,7 +10,7 @@ No special requirements, but note that this role requires root access, so either
 
     - hosts: servers
       roles:
-        - role: ansible-role-s3cmd
+        - role: ansible-role-s3cmd-latest
           become: yes
 
 Role Variables
@@ -31,7 +31,7 @@ Including an example of how to use your role (for instance, with variables passe
     - hosts: servers
       become: yes
       roles:
-         - { role: ansible-role-s3cmd }
+         - { role: ansible-role-s3cmd-latest }
 
 License
 -------
