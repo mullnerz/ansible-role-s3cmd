@@ -4,6 +4,7 @@
 - name: Install python-pip package
   package:
     update_cache=yes
+    cache_valid_time=3600
     install_recommends=no
     name=python-pip
     state=present
