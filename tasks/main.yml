@@ -1,5 +1,5 @@
 ---
-# tasks file for ansible-s3cmd-latest
+# tasks file for ansible-s3cmd
 
 - name: Install python-pip package
   package:
