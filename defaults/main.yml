@@ -1,2 +1,3 @@
 ---
 # defaults file for ansible-s3cmd-latest
+s3cmd_version: latest

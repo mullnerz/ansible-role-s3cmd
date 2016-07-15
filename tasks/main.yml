@@ -9,10 +9,22 @@
     name=python-pip
     state=present
 
-- name: Install latest s3cmd
+- name: Display s3cmd defined version
+  debug: msg="s3cmd_version={{ s3cmd_version }}"
+
+- name: Install s3cmd latest version
   pip:
     name=s3cmd
     state=latest
+  when: s3cmd_version == "latest"
+  ignore_errors: "{{ ansible_check_mode }}"
+
+- name: Install s3cmd defined version
+  pip:
+    name=s3cmd
+    state=present
+    version={{ s3cmd_version | default(1.6.1) }}
+  when: not s3cmd_version == "latest"
   ignore_errors: "{{ ansible_check_mode }}"
 
 - name: Symlink s3cmd executable file to /usr/bin
