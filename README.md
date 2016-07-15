@@ -18,6 +18,8 @@ Role Variables
 
 Available variables are listed below, along with default values (see `defaults/main.yml`):
 
+    s3cmd_version: latest
+
 Dependencies
 ------------
 
@@ -28,10 +30,18 @@ Example Playbook
 
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
+    # Install latest version
     - hosts: servers
       become: yes
       roles:
-         - { role: ansible-role-s3cmd }
+        - ansible-role-s3cmd
+
+    # Install specific version
+    - hosts: servers
+      become: yes
+      roles:
+        - role: ansible-role-s3cmd
+          s3cmd_version: 1.6.1
 
 License
 -------
