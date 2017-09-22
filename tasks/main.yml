@@ -1,16 +1,21 @@
 ---
 # tasks file for ansible-s3cmd
 
-- name: Install python-pip package
-  package:
-    update_cache=yes
-    cache_valid_time=3600
-    install_recommends=no
-    name={{ item }}
-    state=present
+- name: Install python packages (Debian)
+  package: state=present pkg="{{ item }}" install_recommends=no update_cache=yes cache_valid_time=3600
+  when: (ansible_os_family == 'Debian')
   with_items:
     - python-pip
     - python-setuptools
+  tags: packages
+
+- name: Install python packages (RedHat)
+  package: state=present pkg="{{ item }}" update_cache=yes
+  when: (ansible_os_family == 'RedHat')
+  with_items:
+    - python-pip
+    - python-setuptools
+  tags: packages
 
 - name: Display s3cmd defined version
   debug: msg="s3cmd_version={{ s3cmd_version }}"
@@ -36,3 +41,4 @@
     dest=/usr/bin/s3cmd
     state=link
     force=yes
+  when: (ansible_os_family == 'Debian')
