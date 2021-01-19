@@ -2,11 +2,8 @@
 # tasks file for ansible-s3cmd
 
 - name: Install python packages (Debian)
-  package: state=present pkg="{{ item }}" install_recommends=no update_cache=yes cache_valid_time=3600
+  package: state=present pkg="{{ ansible_python_version is version('3.5', 'ge') | ternary('python3-pip', 'python-pip') }}" install_recommends=no update_cache=yes cache_valid_time=3600
   when: (ansible_os_family == 'Debian')
-  with_items:
-    - python-pip
-    - python-setuptools
   tags: packages
 
 #- name: Install python packages (RedHat)
