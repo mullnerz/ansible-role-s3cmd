@@ -9,13 +9,10 @@
     - python-setuptools
   tags: packages
 
-- name: Install python packages (RedHat)
-  package: state=present pkg="{{ item }}" update_cache=yes
-  when: (ansible_os_family == 'RedHat')
-  with_items:
-    - python-pip
-    - python-setuptools
-  tags: packages
+#- name: Install python packages (RedHat)
+#  package: state=present pkg="{{ [ 'python-pip', 'python-setuptools' ] }}" update_cache=yes
+#  when: (ansible_os_family == 'RedHat')
+#  tags: packages
 
 - name: Display s3cmd defined version
   debug: msg="s3cmd_version={{ s3cmd_version }}"
